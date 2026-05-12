@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <!-- REAL TEMPLATE - 这个是真正加载的模板 -->
+    <!-- 设置字符编码为 UTF-8，支持中文显示 -->
+    <meta charset="UTF-8">
+    <!-- 设置响应式视口，确保在移动设备上正常显示 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 页面标题 -->
+    <title>智能合同管理系统</title>
+    <!-- 引入 Bootstrap 5.3.0 CSS 样式文件，用于美化页面 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 引入自定义 CSS 样式 -->
+    <style>
+        /* 设置页面背景颜色为浅灰色，营造专业氛围 */
+        body {
+            background-color: #f8f9fa;
+        }
+        /* 标题区域样式 */
+        .hero-section {
+            /* 使用渐变背景，从深蓝色到浅蓝色 */
+            background: linear-gradient(135deg, #0d6efd 0%, #0dcaf0 100%);
+            /* 白色文字颜色 */
+            color: white;
+            /* 内边距，上下 60px，左右自适应 */
+            padding: 60px 0;
+            /* 底部外边距，与下方内容保持距离 */
+            margin-bottom: 30px;
+        }
+        /* 文本内容区域样式 */
+        .text-content {
+            /* 最大高度 500px，超出部分滚动 */
+            max-height: 500px;
+            /* 自动滚动 */
+            overflow-y: auto;
+            /* 预格式化文本，保留换行和空格 */
+            white-space: pre-wrap;
+            /* 行高设置，提高可读性 */
+            line-height: 1.8;
+            /* 字体大小 */
+            font-size: 14px;
+        }
+        /* 底部区域样式 */
+        .footer-section {
+            /* 深灰色背景 */
+            background-color: #343a40;
+            /* 白色文字 */
+            color: white;
+            /* 内边距，上下 30px */
+            padding: 30px 0;
+            /* 上方外边距，与内容保持距离 */
+            margin-top: 40px;
+        }
+        /* AI 字段卡片美化样式 */
+        .ai-field-card {
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+        .ai-field-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+        /* 字段项美化 */
+        .field-item {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            padding: 16px;
+            height: 100%;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .field-item:hover {
+            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+            transform: scale(1.02);
+        }
+        .field-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        .field-label {
+            font-size: 12px;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .field-value {
+            font-size: 15px;
+            font-weight: 600;
+            color: #212529;
+            margin: 0;
+        }
+        /* JSON 区域美化 */
+        .json-display {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 12px;
+            border: 1px solid #0f3460;
+            font-family: 'Fira Code', 'Consolas', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #e94560;
+            padding: 20px;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .json-display .key {
+            color: #0 f3460;
+        }
+        .json-display .string {
+            color: #4ecca3;
+        }
+        .json-display .number {
+            color: #ffc107;
+        }
+        /* 识别模式标签美化 */
+        .mode-badge {
+            font-size: 13px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        .mode-pdfplumber {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+        }
+        .mode-ocr {
+            background: linear-gradient(135deg, #007bff 0%, #6610f2 100%);
+            color: white;
+        }
+        /* 上传卡片美化 */
+        .upload-card {
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        /* 文本卡片美化 */
+        .result-card {
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        /* 文本内容区美化 */
+        .text-display-area {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 16px;
+            border: 2px solid #dee2e6;
+            padding: 24px;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <!-- 主容器 -->
+    <div class="container-fluid">
+        <!-- 顶部标题区域 - 系统介绍 -->
+        <div class="hero-section">
+            <div class="container">
+                <!-- 主标题 -->
+                <h1 class="text-center mb-3">📄 智能合同管理系统</h1>
+                <!-- 系统简介 -->
+                <p class="text-center lead mb-0">
+                    基于人工智能的合同智能分析平台，自动识别并提取合同关键字段
+                </p>
+            </div>
+        </div>
+
+        <!-- 主要内容区域 -->
+        <div class="container">
+            <!-- 左右分栏布局 -->
+            <div class="row">
+                <!-- 左侧：文件上传区域 -->
+                <div class="col-lg-5">
+                    <div class="card shadow-lg border-0 upload-card">
+                        <!-- 上传卡片头部 -->
+                        <div class="card-header bg-white border-0 pt-4">
+                            <h4 class="text-center mb-0">📤 上传合同文件</h4>
+                        </div>
+                        <!-- 上传卡片主体 -->
+                        <div class="card-body">
+                            <!-- 闪现消息区域 - 显示上传成功或错误提示 -->
+                            {% with messages = get_flashed_messages(with_categories=true) %}
+                                {% if messages %}
+                                    {% for category, message in messages %}
+                                        <!-- 根据 flash 消息的分类（category）选择不同的 Bootstrap 样式 -->
+                                        <!-- category 可以是：success（绿色成功）, info（蓝色信息）, warning（黄色警告）, danger（红色错误） -->
+                                        {% if category == 'success' %}
+                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                            <strong>✅ {{ message }}</strong>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="关闭"></button>
+                                        </div>
+                                        {% elif category == 'info' %}
+                                        <!-- 处理中提示 -->
+                                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                            <strong>⏳ {{ message }}</strong>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="关闭"></button>
+                                        </div>
+                                        {% elif category == 'warning' %}
+                                        <!-- 扫描件提示 -->
+                                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                            <strong>⚠️ {{ message }}</strong>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="关闭"></button>
+                                        </div>
+                                        {% elif category == 'danger' %}
+                                        <!-- 错误提示 -->
+                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            <strong>❌ {{ message }}</strong>
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="关闭"></button>
+                                        </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            {% endwith %}
+
+                            <!-- 文件上传表单 -->
+                            <form method="POST" enctype="multipart/form-data" id="uploadForm">
+                                <!-- 文件选择区域 -->
+                                <div class="mb-4">
+                                    <!-- 文件输入框，限制只能选择 PDF 和图片文件 -->
+                                    <input type="file" class="form-control" id="file" name="file" accept=".pdf,.png,.jpg,.jpeg,application/pdf,image/png,image/jpeg" required>
+                                    <!-- 文件类型提示 -->
+                                    <div class="form-text text-muted mt-2">
+                                        <!-- 文件格式和大小限制说明 -->
+                                        <span class="text-danger">⚠️</span> 支持 PDF、PNG、JPG、JPEG 格式，单个文件大小不超过 10MB
+                                    </div>
+                                </div>
+
+                                <!-- 文件信息预览区域（初始隐藏） -->
+                                <div class="mb-3 d-none" id="fileInfo">
+                                    <div class="card bg-light">
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center">
+                                                <!-- PDF 图标 -->
+                                                <div class="me-3">
+                                                    <span style="font-size: 32px;">📄</span>
+                                                </div>
+                                                <!-- 文件信息 -->
+                                                <div>
+                                                    <strong id="fileName">文件名.pdf</strong>
+                                                    <br>
+                                                    <small class="text-muted" id="fileSize">文件大小：0 KB</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 上传按钮 -->
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-primary btn-lg" id="uploadBtn">
+                                        <!-- 上传按钮图标 -->
+                                        <span class="me-2">⬆️</span> 上传并解析
+                                    </button>
+                                </div>
+                            </form>
+
+                            <!-- 操作说明 -->
+                            <div class="mt-4 p-3 bg-light rounded">
+                                <h6 class="text-center mb-2">📋 操作步骤</h6>
+                                <ol class="small text-muted">
+                                    <li>点击上方选择文件按钮</li>
+                                    <li>选择本地 PDF 格式合同文件</li>
+                                    <li>点击「上传并解析」按钮</li>
+                                    <li>右侧将显示提取的文本内容</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右侧：文本显示区域 -->
+                <div class="col-lg-7">
+                    <div class="card shadow-lg border-0 h-100 result-card">
+                        <!-- 文本显示卡片头部 -->
+                        <div class="card-header bg-white border-0 pt-4">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="mb-0">📝 提取的合同文本</h4>
+                                {% if text %}
+                                <button id="copyBtn" class="btn btn-sm btn-secondary" onclick="copyText()">
+                                    <span class="me-1">📋</span> 复制文本
+                                </button>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <!-- 文本显示卡片主体 -->
+                        <div class="card-body">
+                            {% if text %}
+                                <!-- 文件信息 -->
+                                <div class="mb-3 p-3 bg-light rounded border">
+                                    <div class="d-flex justify-content-between align-items-center flex-wrap">
+                                        <div>
+                                            <strong>文件名：</strong>{{ filename }}
+                                            <span class="mx-2">|</span>
+                                            <strong>文本长度：</strong>{{ text|length }} 字符
+                                        </div>
+                                        {% if ocr_method %}
+                                        <div class="mt-2 mt-md-0">
+                                            <strong>识别模式：</strong>
+                                            {% if 'pdfplumber' in ocr_method %}
+                                            <span class="badge mode-badge mode-pdfplumber">
+                                                📄 {{ ocr_method }}
+                                            </span>
+                                            {% else %}
+                                            <span class="badge mode-badge mode-ocr">
+                                                🔍 {{ ocr_method }}
+                                            </span>
+                                            {% endif %}
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <!-- 文本内容区域 -->
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h6 class="mb-0">📄 提取的合同文本</h6>
+                                        <button class="btn btn-outline-secondary btn-sm" id="copyTextBtn" onclick="copyText()">
+                                            <span class="me-1">📋</span> 复制文本
+                                        </button>
+                                    </div>
+                                </div>
+                                <!-- 使用 pre-wrap 样式保留换行，同时自动换行 -->
+                                <div class="text-display-area" style="white-space: pre-wrap; word-break: break-word;">
+                                    {{ text }}
+                                </div>
+                                <!-- 合同字段提取结果 -->
+                                {% if fields %}
+                                    {% if fields.error %}
+                                        <!-- 错误信息显示 -->
+                                        <div class="card border-danger">
+                                            <div class="card-header bg-danger text-white">
+                                                <h5>❌ AI 分析失败</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="alert alert-danger">
+                                                    <strong>错误详情：</strong><br>
+                                                    {{ fields.error }}
+                                                </div>
+                                                <div class="mt-3">
+                                                    <small class="text-muted">
+                                                        💡 请查看 Flask 终端获取更详细的错误堆栈信息
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                        <!-- 成功提取结果 -->
+                                        <div class="card ai-field-card border-0">
+                                            <div class="card-header bg-gradient text-white py-3" style="background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%);">
+                                                <h5 class="mb-0">🎯 AI 提取的合同字段</h5>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row g-3">
+                                                    <!-- 合同名称 -->
+                                                    <div class="col-md-6">
+                                                        <div class="field-item">
+                                                            <div class="field-icon">📄</div>
+                                                            <div class="field-label">合同名称</div>
+                                                            <p class="field-value">{{ fields.contract_name if fields.contract_name else '未识别' }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 甲方 -->
+                                                    <div class="col-md-6">
+                                                        <div class="field-item">
+                                                            <div class="field-icon">🏢</div>
+                                                            <div class="field-label">甲方</div>
+                                                            <p class="field-value">{{ fields.party_a if fields.party_a else '未识别' }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 乙方 -->
+                                                    <div class="col-md-6">
+                                                        <div class="field-item">
+                                                            <div class="field-icon">👥</div>
+                                                            <div class="field-label">乙方</div>
+                                                            <p class="field-value">{{ fields.party_b if fields.party_b else '未识别' }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 合同金额 -->
+                                                    <div class="col-md-6">
+                                                        <div class="field-item">
+                                                            <div class="field-icon">💰</div>
+                                                            <div class="field-label">合同金额</div>
+                                                            <p class="field-value">{{ fields.amount if fields.amount else '未识别' }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- 签署日期 -->
+                                                    <div class="col-md-12">
+                                                        <div class="field-item">
+                                                            <div class="field-icon">📅</div>
+                                                            <div class="field-label">签署日期</div>
+                                                            <p class="field-value">{{ fields.signing_date if fields.signing_date else '未识别' }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- JSON 格式输出按钮 -->
+                                                <div class="mt-4">
+                                                    <button class="btn btn-outline-primary btn-sm" onclick="copyJson()">
+                                                        <span class="me-1">📋</span> 复制 JSON
+                                                    </button>
+                                                </div>
+                                                <!-- JSON 美化显示区域 -->
+                                                <div class="mt-4">
+                                                    <h6 class="mb-2">📄 JSON 原始数据</h6>
+                                                    <!-- 使用 pre 标签显示格式化的 JSON，配合 CSS 语法高亮 -->
+                                                    <pre id="jsonPretty" class="json-display overflow-auto" style="max-height: 300px;"></pre>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endif %}
+                            {% else %}
+                                <!-- 未上传状态提示 -->
+                                <div class="text-center py-10">
+                                    <div class="mb-4">
+                                        <span style="font-size: 64px;">📄</span>
+                                    </div>
+                                    <h5 class="text-muted mb-2">暂无提取内容</h5>
+                                    <p class="text-muted small">请在左侧上传 PDF 或图片文件，文本将在此显示</p>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 隐藏的 JSON 数据 -->
+    <textarea id="jsonData" class="d-none">{{ fields | tojson }}</textarea>
+
+    <!-- 页面底部区域 - 技术栈说明 -->
+    <div class="footer-section">
+        <div class="container">
+            <div class="row">
+                <!-- 技术栈信息 -->
+                <div class="col-md-12 text-center">
+                    <!-- 底部标题 -->
+                    <h6 class="mb-3">🚀 技术架构</h6>
+                    <!-- 技术栈标签 -->
+                    <div class="d-flex justify-content-center flex-wrap gap-2 mb-3">
+                        <!-- Flask 后端框架标签 -->
+                        <span class="badge bg-primary me-2">Flask</span>
+                        <!-- LangChain AI 框架标签 -->
+                        <span class="badge bg-info me-2">LangChain</span>
+                        <!-- DeepSeek 大模型标签 -->
+                        <span class="badge bg-success me-2">DeepSeek</span>
+                        <!-- PDF 处理标签 -->
+                        <span class="badge bg-warning text-dark me-2">pdfplumber</span>
+                        <!-- OCR 识别标签 -->
+                        <span class="badge bg-danger">DeepSeek OCR</span>
+                    </div>
+                    <!-- 支持的文件类型 -->
+                    <div class="mb-3">
+                        <small class="text-light">支持文件类型：</small>
+                        <span class="badge bg-light text-dark me-1">PDF</span>
+                        <span class="badge bg-light text-dark me-1">PNG</span>
+                        <span class="badge bg-light text-dark me-1">JPG</span>
+                        <span class="badge bg-light text-dark">JPEG</span>
+                    </div>
+                    <!-- 版权和版本信息 -->
+                    <small class="text-muted">
+                        基于 Flask + LangChain + DeepSeek 构建 | 智能合同字段提取系统 v2.0
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入 Bootstrap 5.3.0 JavaScript 文件，支持交互功能 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- 自定义 JavaScript 脚本 -->
+    <script>
+        // 当文档加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取文件输入框元素
+            const fileInput = document.getElementById('file');
+            // 获取文件信息显示区域
+            const fileInfo = document.getElementById('fileInfo');
+            // 获取文件名显示元素
+            const fileName = document.getElementById('fileName');
+            // 获取文件大小显示元素
+            const fileSize = document.getElementById('fileSize');
+            // 获取上传按钮
+            const uploadBtn = document.getElementById('uploadBtn');
+
+            // 监听文件选择事件
+            fileInput.addEventListener('change', function(e) {
+                // 获取选择的文件
+                const file = e.target.files[0];
+
+                // 如果选择了文件
+                if (file) {
+                    // 定义允许的文件扩展名
+                    const allowedExtensions = ['pdf', 'png', 'jpg', 'jpeg'];
+                    // 获取文件扩展名（小写）
+                    const fileExtension = file.name.split('.').pop().toLowerCase();
+                    
+                    // 检查文件类型是否允许
+                    if (!allowedExtensions.includes(fileExtension)) {
+                        // 如果不是允许的格式，显示错误提示
+                        alert('请选择 PDF 或图片格式文件！');
+                        // 清空文件选择
+                        fileInput.value = '';
+                        // 隐藏文件信息区域
+                        fileInfo.classList.add('d-none');
+                        return;
+                    }
+
+                    // 显示文件信息区域
+                    fileInfo.classList.remove('d-none');
+                    // 显示文件名
+                    fileName.textContent = file.name;
+                    // 格式化并显示文件大小
+                    const size = formatFileSize(file.size);
+                    fileSize.textContent = '文件大小：' + size;
+                    
+                    // 更新文件图标（PDF 用 📄，图片用 🖼️）
+                    const fileIconElement = fileInfo.querySelector('.me-3 span');
+                    if (fileExtension === 'pdf') {
+                        fileIconElement.textContent = '📄';
+                    } else {
+                        fileIconElement.textContent = '🖼️';
+                    }
+                } else {
+                    // 如果没有选择文件，隐藏文件信息区域
+                    fileInfo.classList.add('d-none');
+                }
+            });
+
+            // 监听表单提交事件
+            document.getElementById('uploadForm').addEventListener('submit', function() {
+                // 禁用上传按钮，防止重复提交
+                uploadBtn.disabled = true;
+                // 更改按钮文本，提示正在上传
+                uploadBtn.innerHTML = '<span class="me-2">⏳</span> 解析中...';
+            });
+
+            // 格式化文件大小显示
+            function formatFileSize(bytes) {
+                // 如果文件大小小于 1KB，显示字节
+                if (bytes < 1024) {
+                    return bytes + ' B';
+                }
+                // 如果文件大小小于 1MB，显示 KB
+                else if (bytes < 1024 * 1024) {
+                    return (bytes / 1024).toFixed(2) + ' KB';
+                }
+                // 如果文件大小大于等于 1MB，显示 MB
+                else {
+                    return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+                }
+            }
+        });
+
+        // 复制文本到剪贴板
+        function copyText() {
+            // 获取文本内容
+            const text = document.querySelector('.text-content').textContent;
+            // 使用 Clipboard API 复制文本
+            navigator.clipboard.writeText(text).then(() => {
+                // 修改按钮显示状态
+                const btn = document.getElementById('copyBtn');
+                btn.innerHTML = '<span class="me-1">✅</span> 已复制！';
+                // 3秒后恢复按钮文本
+                setTimeout(() => {
+                    btn.innerHTML = '<span class="me-1">📋</span> 复制文本';
+                }, 3000);
+            }).catch(err => {
+                // 如果复制失败，显示错误提示
+                alert('复制失败，请手动复制');
+            });
+        }
+
+        // 复制 JSON 数据到剪贴板
+        function copyJson() {
+            // 获取 JSON 数据
+            const jsonData = document.getElementById('jsonData').value;
+            // 使用 Clipboard API 复制文本
+            navigator.clipboard.writeText(jsonData).then(() => {
+                // 显示成功提示
+                alert('JSON 数据已复制到剪贴板！');
+            }).catch(err => {
+                // 如果复制失败，显示错误提示
+                alert('复制失败，请手动复制');
+            });
+        }
+
+        // JSON 格式化函数 - 将 JSON 字符串美化显示
+        function formatJson(jsonStr) {
+            try {
+                // 解析 JSON
+                const obj = JSON.parse(jsonStr);
+                // 格式化输出，4个空格缩进
+                return JSON.stringify(obj, null, 4);
+            } catch (e) {
+                // 如果解析失败，返回原始字符串
+                return jsonStr;
+            }
+        }
+
+        // 页面加载完成后，自动显示格式化的 JSON
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取隐藏的 JSON 数据
+            const jsonDataElement = document.getElementById('jsonData');
+            const jsonPrettyElement = document.getElementById('jsonPretty');
+            
+            if (jsonDataElement && jsonPrettyElement && jsonDataElement.value) {
+                // 格式化并显示 JSON
+                jsonPrettyElement.textContent = formatJson(jsonDataElement.value);
+            }
+        });
+    </script>
+</body>
+</html>

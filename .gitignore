@@ -1,0 +1,44 @@
+# Python 缓存文件
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+.Python
+*.egg-info/
+build/
+dist/
+
+# 虚拟环境
+venv/
+env/
+ENV/
+.venv
+
+# IDE 配置文件
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# 上传的文件
+uploads/
+
+# 环境变量和敏感信息
+.env
+.env.local
+
+# 日志文件
+*.log
+
+# Trae 相关文件
+.trae/
+
+# 调试文件
+*debug*
+*test*
+*diagnose*
+*.bak
+*.backup
+*_backup*
