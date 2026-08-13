@@ -1,0 +1,40 @@
+# 智能合同与投标管理平台 - 后端依赖
+# Sprint 0 Release Check(v0.2.1):精简未使用依赖,显式化传递依赖,新增数据库基础设施。
+
+# ---------- 后端框架 ----------
+flask==2.3.3
+werkzeug==2.3.7
+
+# ---------- 数据库(Sprint 1:init_app + create_all + User Model)----------
+Flask-SQLAlchemy==3.1.1
+
+# ---------- 认证(Sprint 1 - v0.3.0)----------
+Flask-JWT-Extended==4.6.0
+
+# ---------- CORS(Sprint 2 - v0.4.0 前端 Admin Console)----------
+flask-cors==4.0.0
+
+# ---------- PDF 处理 ----------
+pdfplumber==0.10.2
+
+# ---------- 图片处理 ----------
+Pillow==10.0.0
+
+# ---------- AI 框架 ----------
+# 注:langchain_openai 依赖 langchain-core;deepseek_service 直接 import langchain_core
+langchain-openai==0.1.2
+langchain-core==0.1.53
+
+# ---------- 环境变量管理 ----------
+python-dotenv==1.0.0
+
+# ---------- Embedding & Vector Store(Sprint 4 - v0.6.0 知识库 / RAG)----------
+# sentence-transformers 会自动拉取 torch CPU 版(体积较大,首次安装较慢)
+sentence-transformers==2.7.0
+faiss-cpu==1.8.0
+numpy>=1.24,<2.0
+python-docx==1.1.0          # 知识库 DOCX 加载
+
+# ---------- Redis 缓存(Sprint 8 - v1.0.0 企业级 AI 增强)----------
+# 未安装时 CacheService 自动降级内存缓存,不影响启动
+redis==5.0.1

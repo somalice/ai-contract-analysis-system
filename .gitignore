@@ -1,44 +1,99 @@
-# Python 缓存文件
+# ============================================
+# 智能合同与投标管理平台 - v1.0.0 Git 忽略规则
+# ============================================
+
+# ---------- Python ----------
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
-*.so
+*.py[cod]
+*$py.class
+.pytest_cache/
 .Python
-*.egg-info/
 build/
 dist/
+*.egg-info/
+.eggs/
 
-# 虚拟环境
+# ---------- 虚拟环境 ----------
 venv/
 env/
 ENV/
 .venv
 
-# IDE 配置文件
+# ---------- IDE / 系统文件 ----------
 .idea/
 .vscode/
 *.swp
 *.swo
 *~
+.DS_Store
+Thumbs.db
 
-# 上传的文件
+# ---------- 环境变量与敏感信息 ----------
+# 任何 .env / .env.* 均不入库,仅保留 .env.example 与无敏感信息的前端环境文件
+.env
+.env.*
+!.env.example
+!frontend/.env.development
+!frontend/.env.production
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# ---------- 日志 ----------
+*.log
+logs/
+backend/logs/
+
+# ---------- 数据库(SQLite 及备份) ----------
+*.db
+*.sqlite
+*.sqlite3
+*.db.bak*
+*.db.bak.*
+backend/instance/
+
+# ---------- 用户上传文件(合同/招标/投标/模板/知识文档) ----------
+backend/uploads/
 uploads/
 
-# 环境变量和敏感信息
-.env
-.env.local
+# ---------- 本地模型 / 向量库 / FAISS 索引 ----------
+backend/storage/models/
+storage/models/
+backend/storage/vectorstore/
+*.faiss
+*.faiss.meta.json
 
-# 日志文件
-*.log
+# ---------- 前端构建 ----------
+frontend/node_modules/
+frontend/dist/
+frontend/.env.local
 
-# Trae 相关文件
-.trae/
+# ---------- Evaluation / Embedding 缓存 ----------
+**/evaluation/cache/
+**/embedding_cache/
+evaluation_embedding_cache/
+*.faiss.cache
 
-# 调试文件
-*debug*
-*test*
-*diagnose*
+# ---------- OCR 临时目录 ----------
+ocr_temp/
+
+# ---------- 备份 / 一次性临时文件 ----------
 *.bak
 *.backup
 *_backup*
+*.out
+
+# ---------- 一次性调试/排障脚本(按前缀精确匹配,不误伤正式源码) ----------
+debug_*
+tmp_*
+cleanup_*
+reset_*
+verify_*
+check_*
+diagnose_*
+_release_*
+_deactivate_*
+_diag_*
+
+# ---------- Trae ----------
+.trae/

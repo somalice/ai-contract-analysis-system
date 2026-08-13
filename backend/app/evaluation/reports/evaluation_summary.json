@@ -1,0 +1,340 @@
+{
+  "version": "v1.0.0-RC",
+  "generated_at": "2026-08-12 09:10:27",
+  "evaluation_mode": "standard",
+  "answer_generation": "ground_truth",
+  "total_questions": 51,
+  "context_hit_count": 51,
+  "context_hit_rate": 1.0,
+  "faithfulness": 0.8102,
+  "answer_relevancy": 0.7886,
+  "context_precision": 0.8117,
+  "context_recall": 0.8233,
+  "ai_total_calls": 948,
+  "ai_success_rate": 0.9947,
+  "ai_p95_latency_ms": 25138,
+  "total_tokens": 0,
+  "estimated_cost_rmb": 0.0,
+  "agent_task_total": 13,
+  "agent_completion_rate": 1.0,
+  "tool_call_total": 0,
+  "tool_success_rate": 0.0,
+  "test_environment": {
+    "knowledge_total_documents": 43,
+    "knowledge_hit_documents": 40,
+    "knowledge_embedding_completed": 43,
+    "knowledge_hit_rate": 0.9302,
+    "embedding_model": "BAAI/bge-small-zh-v1.5",
+    "llm_model": "DeepSeek (deepseek-chat)",
+    "retriever": "DenseRetriever(TopK=5, Threshold=0.35)",
+    "vector_store": "FAISS IndexFlatIP + IndexIDMap2"
+  },
+  "performance": {
+    "total_seconds": 621.44,
+    "embedding_seconds": 0.0,
+    "retrieval_seconds": 249.85,
+    "rerank_seconds": 1712.4,
+    "metric_seconds": 0.29,
+    "cache_hit_rate": 0.0,
+    "cache_hit_count": 0,
+    "cache_total_count": 51,
+    "cache_enabled": true,
+    "parallel_workers": 4,
+    "use_rerank": true
+  },
+  "status": "FAIL",
+  "status_label": "未达标",
+  "reason": "[RAG] 2 项 RAG 指标未达标: faithfulness(0.8102<0.85), answer_relevancy(0.7886<0.85) | [AI] 稳定性不达标: P95 25138ms ≥ 目标 10000ms",
+  "rag_status": {
+    "status": "FAIL",
+    "reason": "2 项 RAG 指标未达标: faithfulness(0.8102<0.85), answer_relevancy(0.7886<0.85)",
+    "context_hit_rate": 1.0,
+    "details": {
+      "total_questions": 51,
+      "context_hit_count": 51,
+      "mean_scores": {
+        "faithfulness": 0.8102,
+        "answer_relevancy": 0.7886,
+        "context_precision": 0.8117,
+        "context_recall": 0.8233
+      },
+      "targets": {
+        "faithfulness": 0.85,
+        "answer_relevancy": 0.85,
+        "context_precision": 0.8,
+        "context_recall": 0.8
+      },
+      "failed_metrics": [
+        {
+          "metric": "faithfulness",
+          "actual": 0.8102,
+          "target": 0.85,
+          "gap": 0.0398
+        },
+        {
+          "metric": "answer_relevancy",
+          "actual": 0.7886,
+          "target": 0.85,
+          "gap": 0.0614
+        }
+      ]
+    }
+  },
+  "ai_status": {
+    "status": "FAIL",
+    "reason": "稳定性不达标: P95 25138ms ≥ 目标 10000ms",
+    "details": {
+      "total_calls": 948,
+      "success_rate": 0.9947,
+      "p95_latency_ms": 25138,
+      "targets": {
+        "success_rate": 0.95,
+        "p95_latency_ms": 10000
+      },
+      "failed_items": [
+        "P95 25138ms ≥ 目标 10000ms"
+      ]
+    }
+  },
+  "rag_aggregate": {
+    "count": 51,
+    "mean": {
+      "faithfulness": 0.8102,
+      "answer_relevancy": 0.7886,
+      "context_precision": 0.8117,
+      "context_recall": 0.8233
+    },
+    "pass_rate": {
+      "faithfulness": 0.1569,
+      "answer_relevancy": 0.1373,
+      "context_precision": 0.5686,
+      "context_recall": 0.6078
+    },
+    "targets": {
+      "faithfulness": 0.85,
+      "answer_relevancy": 0.85,
+      "context_precision": 0.8,
+      "context_recall": 0.8
+    }
+  },
+  "rag_per_category": {
+    "legal_clauses": {
+      "count": 16,
+      "mean": {
+        "faithfulness": 0.8188,
+        "answer_relevancy": 0.8002,
+        "context_precision": 0.8062,
+        "context_recall": 0.8232
+      },
+      "pass_rate": {
+        "faithfulness": 0.25,
+        "answer_relevancy": 0.125,
+        "context_precision": 0.625,
+        "context_recall": 0.6875
+      },
+      "targets": {
+        "faithfulness": 0.85,
+        "answer_relevancy": 0.85,
+        "context_precision": 0.8,
+        "context_recall": 0.8
+      }
+    },
+    "risk_clauses": {
+      "count": 12,
+      "mean": {
+        "faithfulness": 0.8076,
+        "answer_relevancy": 0.777,
+        "context_precision": 0.8334,
+        "context_recall": 0.8406
+      },
+      "pass_rate": {
+        "faithfulness": 0.25,
+        "answer_relevancy": 0.1667,
+        "context_precision": 0.6667,
+        "context_recall": 0.75
+      },
+      "targets": {
+        "faithfulness": 0.85,
+        "answer_relevancy": 0.85,
+        "context_precision": 0.8,
+        "context_recall": 0.8
+      }
+    },
+    "commercial_terms": {
+      "count": 12,
+      "mean": {
+        "faithfulness": 0.8222,
+        "answer_relevancy": 0.7727,
+        "context_precision": 0.8265,
+        "context_recall": 0.8335
+      },
+      "pass_rate": {
+        "faithfulness": 0.0833,
+        "answer_relevancy": 0.0833,
+        "context_precision": 0.5833,
+        "context_recall": 0.5833
+      },
+      "targets": {
+        "faithfulness": 0.85,
+        "answer_relevancy": 0.85,
+        "context_precision": 0.8,
+        "context_recall": 0.8
+      }
+    },
+    "contract_basic": {
+      "count": 11,
+      "mean": {
+        "faithfulness": 0.7874,
+        "answer_relevancy": 0.8016,
+        "context_precision": 0.7799,
+        "context_recall": 0.7933
+      },
+      "pass_rate": {
+        "faithfulness": 0.0,
+        "answer_relevancy": 0.1818,
+        "context_precision": 0.3636,
+        "context_recall": 0.3636
+      },
+      "targets": {
+        "faithfulness": 0.85,
+        "answer_relevancy": 0.85,
+        "context_precision": 0.8,
+        "context_recall": 0.8
+      }
+    }
+  },
+  "ai_per_agent": {
+    "contract_review": {
+      "calls": 4,
+      "success": 2,
+      "failed": 2,
+      "success_rate": 0.5,
+      "avg_latency_ms": 9918,
+      "p95_latency_ms": 14974,
+      "avg_total_tokens": 0
+    },
+    "generation": {
+      "calls": 2,
+      "success": 2,
+      "failed": 0,
+      "success_rate": 1.0,
+      "avg_latency_ms": 42094,
+      "p95_latency_ms": 63143,
+      "avg_total_tokens": 0
+    },
+    "rag": {
+      "calls": 942,
+      "success": 939,
+      "failed": 3,
+      "success_rate": 0.9968,
+      "avg_latency_ms": 13909,
+      "p95_latency_ms": 25094,
+      "avg_total_tokens": 0
+    }
+  },
+  "agent_tool_breakdown": [],
+  "knowledge_coverage": {
+    "total": 51,
+    "covered": 32,
+    "partial": 13,
+    "not_covered": 6,
+    "unknown": 0,
+    "covered_rate": 0.6275,
+    "partial_rate": 0.2549,
+    "not_covered_rate": 0.1176,
+    "retriever_hit_rate": 1.0,
+    "retrieved_correct_rate": 0.9412,
+    "effective_coverage_rate": 0.8824,
+    "by_source_type": {
+      "contract": {
+        "total": 23,
+        "covered": 18,
+        "partial": 3,
+        "not_covered": 2,
+        "unknown": 0
+      },
+      "enterprise": {
+        "total": 3,
+        "covered": 1,
+        "partial": 1,
+        "not_covered": 1,
+        "unknown": 0
+      },
+      "legal": {
+        "total": 25,
+        "covered": 13,
+        "partial": 9,
+        "not_covered": 3,
+        "unknown": 0
+      }
+    }
+  },
+  "aggregate_by_coverage": {
+    "covered": {
+      "count": 32,
+      "mean": {
+        "faithfulness": 0.7925,
+        "answer_relevancy": 0.771,
+        "context_precision": 0.7734,
+        "context_recall": 0.782
+      },
+      "pass_rate": {
+        "faithfulness": 0.0625,
+        "answer_relevancy": 0.0938,
+        "context_precision": 0.3125,
+        "context_recall": 0.375
+      },
+      "targets": {
+        "faithfulness": 0.85,
+        "answer_relevancy": 0.85,
+        "context_precision": 0.8,
+        "context_recall": 0.8
+      }
+    },
+    "partial": {
+      "count": 13,
+      "mean": {
+        "faithfulness": 0.8403,
+        "answer_relevancy": 0.8155,
+        "context_precision": 0.8837,
+        "context_recall": 0.8995
+      },
+      "pass_rate": {
+        "faithfulness": 0.3077,
+        "answer_relevancy": 0.2308,
+        "context_precision": 1.0,
+        "context_recall": 1.0
+      },
+      "targets": {
+        "faithfulness": 0.85,
+        "answer_relevancy": 0.85,
+        "context_precision": 0.8,
+        "context_recall": 0.8
+      }
+    },
+    "not_covered": {
+      "count": 6,
+      "mean": {
+        "faithfulness": 0.8395,
+        "answer_relevancy": 0.8239,
+        "context_precision": 0.8603,
+        "context_recall": 0.8783
+      },
+      "pass_rate": {
+        "faithfulness": 0.3333,
+        "answer_relevancy": 0.1667,
+        "context_precision": 1.0,
+        "context_recall": 1.0
+      },
+      "targets": {
+        "faithfulness": 0.85,
+        "answer_relevancy": 0.85,
+        "context_precision": 0.8,
+        "context_recall": 0.8
+      }
+    }
+  },
+  "eval_duration_ms": 621441,
+  "run_duration_ms": 623359,
+  "report_no": "EVAL-20260812091028-696024ED"
+}

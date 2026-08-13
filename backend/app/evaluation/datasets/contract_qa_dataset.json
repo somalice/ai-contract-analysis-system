@@ -1,0 +1,461 @@
+[
+  {
+    "question": "合同中通常包含哪些基础信息要素？",
+    "ground_truth": "合同基础信息通常包括：合同编号、合同名称、签订日期、合同双方（甲方乙方名称、统一社会信用代码、法定代表人、注册地址、联系方式）、合同金额、合同期限或有效期、签订地点等核心要素。",
+    "category": "contract_basic",
+    "source_type": "contract",
+    "knowledge_category": "basic_info",
+    "source_document": "[评估测试] 采购合同标准模板与基础要素",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "什么是合同的甲方和乙方？如何区分？",
+    "ground_truth": "甲方一般是指提出目标并支付款项的一方（采购方/发包方/委托方），乙方是指完成工作或交付货物并收取款项的一方（供应方/承包方/服务方）。区分依据通常看权利义务描述：甲方一般承担付款义务，乙方一般承担交付/履约义务。",
+    "category": "contract_basic",
+    "source_type": "contract",
+    "knowledge_category": "parties",
+    "source_document": "[评估测试] 采购合同标准模板与基础要素",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "合同金额的表达方式有哪几种？需要注意什么？",
+    "ground_truth": "合同金额通常同时使用阿拉伯数字和中文大写（人民币壹贰叁肆伍陆柒捌玖拾佰仟万亿元角分整），必要时注明是否含税、币种、汇率基准。注意事项：大小写必须一致，含税价需明确税率，闭口价与开口价需清晰界定。",
+    "category": "contract_basic",
+    "source_type": "contract",
+    "knowledge_category": "amount",
+    "source_document": "[评估测试] 采购合同标准模板与基础要素",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "合同有效期与合同履行期限有什么区别？",
+    "ground_truth": "合同有效期是指合同从生效到终止的法律约束期限；合同履行期限是指各方完成合同义务（交货、付款、提供服务）的时间节点。履行期限通常在有效期内，部分条款（保密、争议解决）可在有效期终止后继续有效。",
+    "category": "contract_basic",
+    "source_type": "contract",
+    "knowledge_category": "validity",
+    "source_document": "[评估测试] 采购合同标准模板与基础要素",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "合同编号有什么作用？企业一般如何编制？",
+    "ground_truth": "合同编号用于唯一标识合同，便于归档、检索、审计和履行跟踪。常见编制规则：公司缩写+年份+类型缩写+流水号，例如 HT-2025-CG-0023 表示2025年采购类第23号合同。编号应保持唯一性和可追溯性。",
+    "category": "contract_basic",
+    "source_type": "enterprise",
+    "knowledge_category": "numbering",
+    "source_document": "[评估测试] 采购合同标准模板与基础要素",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "签订地点在合同中有什么法律意义？",
+    "ground_truth": "签订地点决定合同争议解决时的地域管辖依据之一；若合同未约定管辖法院，通常由被告住所地或合同履行地法院管辖，签订地也可作为补充连结因素。涉外合同中签订地点还可能影响准据法的适用。",
+    "category": "contract_basic",
+    "source_type": "legal",
+    "knowledge_category": "signing_place",
+    "source_document": "[评估测试] 采购合同标准模板与基础要素",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "合同中法定代表人签字与盖章哪个更重要？",
+    "ground_truth": "根据《民法典》，当事人采用合同书形式订立合同的，自当事人均签名、盖章或者按指印时合同成立。法定代表人签字与公司公章具有同等法律效力，但企业实务中通常要求同时具备授权代表签字+公章，以避免越权签字风险。",
+    "category": "contract_basic",
+    "source_type": "legal",
+    "knowledge_category": "signing",
+    "source_document": "[评估测试] 采购合同标准模板与基础要素",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "合同附件的法律效力如何？与正文冲突怎么办？",
+    "ground_truth": "合同附件是合同不可分割的组成部分，与正文具有同等法律效力。若附件与正文冲突，应以合同中约定的效力优先级条款为准；若无约定，通常按签署时间在后优先，或正文效力优先于附件，具体需结合上下文和交易习惯综合判断。",
+    "category": "contract_basic",
+    "source_type": "legal",
+    "knowledge_category": "attachment",
+    "source_document": "[评估测试] 采购合同标准模板与基础要素",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "框架协议与单次合同有什么区别？",
+    "ground_truth": "框架协议（Master Agreement）约定长期合作的通用条款（价格机制、违约责任、保密、争议解决等），不约定具体单次交易数量；单次合同（Order/PO）在框架协议下针对具体交易明确数量、金额、交付时间等。框架协议+订单是企业高频采购常用模式。",
+    "category": "contract_basic",
+    "source_type": "contract",
+    "knowledge_category": "framework",
+    "source_document": "[评估测试] 保密协议权利义务与例外",
+    "knowledge_coverage": "partial"
+  },
+  {
+    "question": "采购合同中\"含税价\"与\"不含税价\"如何区分？",
+    "ground_truth": "含税价包含增值税等流转税，是买方最终支付的总价；不含税价是商品或服务本身的价格，税金需另行计算支付。合同中必须明确：税率（如13%/9%/6%）、发票类型（增值税专用发票/普通发票）、开票时间与开票信息。",
+    "category": "contract_basic",
+    "source_type": "contract",
+    "knowledge_category": "tax",
+    "source_document": "[评估测试] 采购合同标准模板与基础要素",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "常见的合同付款方式有哪几种？",
+    "ground_truth": "常见付款方式包括：1. 预付款：合同签订后支付10%-30%；2. 进度款：按里程碑或完工百分比支付；3. 验收款：交付并验收合格后支付至90%-95%；4. 质保金：5%-10%在质保期满后支付；5. 一次性付款：适用于小额简单交易；6. 信用证/银行承兑汇票：适用于大额贸易。",
+    "category": "commercial_terms",
+    "source_type": "contract",
+    "knowledge_category": "payment_method",
+    "source_document": "[评估测试] 采购合同付款方式与验收标准",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "采购合同中为什么要留质保金？比例通常是多少？",
+    "ground_truth": "质保金（质量保证金）用于约束卖方在质保期内履行维修、更换、退货等质量义务，防止交付后卖方逃避责任。比例通常为合同总价的5%-10%，质保期一般为6个月至2年（按行业和产品特性），质保期满无质量问题则无息退还。",
+    "category": "commercial_terms",
+    "source_type": "contract",
+    "knowledge_category": "warranty_deposit",
+    "source_document": "[评估测试] 采购合同付款方式与验收标准",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "什么是付款节点？软件项目通常如何设置？",
+    "ground_truth": "付款节点是与交付里程碑挂钩的付款触发条件。软件项目典型节点：1. 合同签订：预付20%-30%；2. 需求确认/原型评审：付20%；3. UAT测试通过/上线试运行：付30%-40%；4. 终验合格/质保期前：付至95%；5. 质保期满1年：付剩余5%质保金。",
+    "category": "commercial_terms",
+    "source_type": "contract",
+    "knowledge_category": "milestone",
+    "source_document": "[评估测试] 采购合同付款方式与验收标准",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "交付条款应包含哪些核心内容？",
+    "ground_truth": "交付条款通常包括：交付时间（或交付周期）、交付地点、交付方式（现场/邮寄/线上）、交付清单（货物清单/文档清单/源码清单）、包装要求、运输方式及费用承担、风险转移节点（装运港/目的港/签收后）、签收流程与异议期。",
+    "category": "commercial_terms",
+    "source_type": "contract",
+    "knowledge_category": "delivery",
+    "source_document": "[评估测试] 采购合同付款方式与验收标准",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "验收标准有哪几类？合同中应该怎么写？",
+    "ground_truth": "验收标准分为：1. 形式验收：数量、规格、包装、单据核对无误；2. 功能验收：按技术规格书逐一测试功能点；3. 性能验收：响应时间、并发量、稳定性等指标达标；4. 试运行验收：上线运行7-30天无重大故障。合同中应明确验收方法、验收主体、异议期（通常7-15天）、不合格处理流程。",
+    "category": "commercial_terms",
+    "source_type": "contract",
+    "knowledge_category": "acceptance",
+    "source_document": "[评估测试] 采购合同付款方式与验收标准",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "逾期付款的违约金一般怎么约定？",
+    "ground_truth": "逾期付款违约金通常按日计算：每日万分之三至万分之五（年利率约10.95%-18.25%），同时设置上限（通常不超过未付款总额的5%-10%）。注意：违约金过分高于实际损失时，法院可依《民法典》第585条酌情调减，故应在合理区间内。",
+    "category": "commercial_terms",
+    "source_type": "contract",
+    "knowledge_category": "late_payment",
+    "source_document": "[评估测试] 采购合同付款方式与验收标准",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "延期交付的违约责任通常如何设置？",
+    "ground_truth": "延期交付违约责任一般按日计罚：每日0.1%-0.5%合同额，累计上限通常为合同总金额的5%-10%。达到累计上限或延迟超过约定期限（如15-30天），买方有权单方解除合同并要求退还已付款+支付违约金+赔偿实际损失。",
+    "category": "commercial_terms",
+    "source_type": "contract",
+    "knowledge_category": "late_delivery",
+    "source_document": "[评估测试] 采购合同付款方式与验收标准",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "什么是不可抗力条款？通常包含哪些情形？",
+    "ground_truth": "不可抗力（Force Majeure）是指不能预见、不能避免且不能克服的客观情况。典型情形：自然灾害（地震、洪水、台风）、政府行为（征收、战争、罢工、疫情封控）、社会异常事件。法律后果：受影响一方部分或全部免除责任，但应及时通知对方并提供证明，且应在合理期限内提供证明材料。",
+    "category": "risk_clauses",
+    "source_type": "contract",
+    "knowledge_category": "force_majeure",
+    "source_document": "[评估测试] 采购合同违约责任与风险条款",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "违约金与赔偿损失有什么区别？可以同时主张吗？",
+    "ground_truth": "违约金是合同预先约定的违约金额，具有补偿性为主、惩罚性为辅；赔偿损失是守约方举证证明的实际损失（直接损失+可得利益损失）。原则上二者择一主张：若违约金低于实际损失，可请求法院增加；若违约金过分高于实际损失，违约方可请求法院适当减少。约定了违约金不足以弥补损失的，可就不足部分请求赔偿。",
+    "category": "risk_clauses",
+    "source_type": "contract",
+    "knowledge_category": "penalty_damages",
+    "source_document": "[评估测试] 采购合同付款方式与验收标准",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "什么是定金罚则？与订金有什么区别？",
+    "ground_truth": "定金是《民法典》明确的担保方式：给付定金一方违约，无权要求返还定金；收受定金一方违约，应双倍返还定金（即定金罚则）。定金不得超过主合同标的额的20%。订金（诚意金/预付款）无担保性质，仅为预先付款，违约时可退还或抵扣货款，不适用双倍返还。",
+    "category": "risk_clauses",
+    "source_type": "legal",
+    "knowledge_category": "deposit",
+    "source_document": "[评估测试] 付款协议质保金与违约金",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "保密条款的核心要素有哪些？保密期一般多久？",
+    "ground_truth": "保密条款核心要素：保密信息的定义（技术信息、经营信息、客户信息、财务数据等）、保密义务主体（双方及其员工/顾问/分包商）、保密措施要求（不低于合理注意标准）、禁止使用范围（仅为履行本合同之目的）、保密期限（通常合同终止后2-5年，商业秘密可约定长期保密）、泄密救济（禁令+赔偿损失）。",
+    "category": "risk_clauses",
+    "source_type": "contract",
+    "knowledge_category": "confidentiality",
+    "source_document": "[评估测试] 采购合同争议解决与法律条款",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "竞业限制条款适用于什么场景？需要支付补偿吗？",
+    "ground_truth": "竞业限制常见于劳动合同、服务合同、技术合作合同中，限制一方在约定期限内从事与另一方相竞争的业务。劳动合同场景下，根据《劳动合同法》，竞业限制期限不得超过2年，用人单位需按月支付经济补偿（通常为劳动者解除前12个月平均工资的30%且不低于最低工资标准），未支付补偿的竞业限制对劳动者不具有约束力。",
+    "category": "risk_clauses",
+    "source_type": "contract",
+    "knowledge_category": "noncompete",
+    "source_document": "[评估测试] 劳动合同基础信息与期限",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "单方解除合同的法定情形有哪些？",
+    "ground_truth": "根据《民法典》第563条，法定解除情形包括：1. 因不可抗力致使不能实现合同目的；2. 履行期限届满前一方明确表示或以行为表明不履行主要债务；3. 一方迟延履行主要债务，经催告后在合理期限内仍未履行；4. 一方迟延履行或有其他违约行为致使不能实现合同目的；5. 法律规定的其他情形（如承揽合同定作人任意解除权、委托合同双方任意解除权）。",
+    "category": "risk_clauses",
+    "source_type": "legal",
+    "knowledge_category": "termination",
+    "source_document": "[评估测试] 采购合同违约责任与风险条款",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "什么是瑕疵担保责任？包括哪些内容？",
+    "ground_truth": "瑕疵担保责任是卖方/承揽人应保证交付标的物或工作成果符合约定的质量、数量、规格，不存在质量缺陷或权利瑕疵。包括：1. 物的瑕疵担保：质量不符合约定应承担修理、更换、退货、减价、赔偿损失等责任；2. 权利瑕疵担保：保证第三人对标的物不享有所有权、抵押权、知识产权等权利，否则买方有权要求消除权利负担或解除合同。",
+    "category": "risk_clauses",
+    "source_type": "contract",
+    "knowledge_category": "defect_warranty",
+    "source_document": "[评估测试] 付款协议质保金与违约金",
+    "knowledge_coverage": "partial"
+  },
+  {
+    "question": "合同中的赔偿责任上限条款是什么？为什么重要？",
+    "ground_truth": "赔偿责任上限（Liability Cap）约定一方违约或侵权时承担赔偿责任的最高金额，通常为合同总额的1-2倍或固定金额，同时排除间接损失（利润损失、商誉损失、机会损失等）的赔偿。重要性：控制商业风险，避免因单笔合同违约导致企业陷入重大财务危机，是企业合同风险管理的核心条款之一。",
+    "category": "risk_clauses",
+    "source_type": "contract",
+    "knowledge_category": "liability_cap",
+    "source_document": "[评估测试] 付款协议质保金与违约金",
+    "knowledge_coverage": "partial"
+  },
+  {
+    "question": "争议解决方式有哪几种？各有什么特点？",
+    "ground_truth": "主要争议解决方式：1. 协商（Negotiation）：双方自行沟通，成本最低，应约定为先置程序；2. 调解（Mediation）：第三方中立调解人协助，无强制力；3. 仲裁（Arbitration）：一裁终局，裁决可跨境执行（《纽约公约》），程序灵活保密性强，适合涉外或专业性强的纠纷；4. 诉讼（Litigation）：两审终审，有强制执行力，适合管辖约定明确或金额较大的一般商事纠纷。",
+    "category": "legal_clauses",
+    "source_type": "legal",
+    "knowledge_category": "dispute_resolution",
+    "source_document": "[评估测试] 采购合同争议解决与法律条款",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "合同中约定管辖法院时应注意什么？",
+    "ground_truth": "约定管辖法院应遵循《民事诉讼法》：只能在被告住所地、合同履行地、合同签订地、原告住所地、标的物所在地等与争议有实际联系的地点的人民法院中选择，不得违反级别管辖和专属管辖（如不动产纠纷由不动产所在地法院专属管辖）。建议尽量约定己方所在地法院，降低维权成本。",
+    "category": "legal_clauses",
+    "source_type": "legal",
+    "knowledge_category": "jurisdiction",
+    "source_document": "[评估测试] 采购合同争议解决与法律条款",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "适用法律条款（准据法）在什么情况下需要特别约定？",
+    "ground_truth": "涉外合同必须明确约定适用法律，否则可能适用《涉外民事关系法律适用法》的最密切联系原则导致不确定结果。国内合同一般默认适用中华人民共和国法律，但建议仍明确写\"本合同的订立、效力、解释、履行及争议解决均适用中华人民共和国法律（不含香港、澳门、台湾地区法律）\"，避免歧义。",
+    "category": "legal_clauses",
+    "source_type": "legal",
+    "knowledge_category": "governing_law",
+    "source_document": "[评估测试] 服务合同终止与争议解决",
+    "knowledge_coverage": "partial"
+  },
+  {
+    "question": "什么是合同的情势变更原则？如何适用？",
+    "ground_truth": "情势变更是《民法典》第533条规定的：合同成立后，合同的基础条件发生了当事人在订立合同时无法预见的、不属于商业风险的重大变化，继续履行对一方明显不公平的，受不利影响方可与对方重新协商；协商不成可请求法院/仲裁机构变更或解除合同。适用条件：客观情况重大变化+不可预见+非商业风险+明显不公。",
+    "category": "legal_clauses",
+    "source_type": "legal",
+    "knowledge_category": "hardship",
+    "source_document": "[评估测试] 付款协议争议与法律责任",
+    "knowledge_coverage": "partial"
+  },
+  {
+    "question": "合同无效的法定情形有哪些？",
+    "ground_truth": "根据《民法典》，合同无效情形包括：1. 无民事行为能力人实施的民事法律行为；2. 虚假意思表示（阴阳合同）；3. 违反法律、行政法规强制性规定；4. 违背公序良俗；5. 恶意串通损害他人合法权益。合同无效自始没有法律约束力，但不影响合同中有关解决争议方法条款的效力。",
+    "category": "legal_clauses",
+    "source_type": "legal",
+    "knowledge_category": "invalidity",
+    "source_document": "[评估测试] 保密协议争议解决与法律责任",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "什么是可撤销合同？撤销权行使期限是多久？",
+    "ground_truth": "可撤销合同包括：1. 基于重大误解实施的（90日内行使）；2. 一方以欺诈手段使对方违背真实意思的；3. 第三人欺诈且对方知道/应当知道的；4. 一方/第三人胁迫手段的；5. 一方利用对方危困状态、缺乏判断能力等显失公平的（以上均为1年内行使，自知道或应当知道撤销事由之日起）。当事人自民事法律行为发生之日起5年内未行使撤销权的，撤销权消灭。",
+    "category": "legal_clauses",
+    "source_type": "legal",
+    "knowledge_category": "revocation",
+    "source_document": "[评估测试] 劳动合同解除与违约责任",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "诉讼时效一般是多长？合同纠纷从什么时候起算？",
+    "ground_truth": "普通诉讼时效期间为3年，自权利人知道或者应当知道权利受到损害以及义务人之日起计算。合同债务分期履行的，自最后一期履行期限届满之日起计算。超过诉讼时效的，权利人丧失胜诉权（义务人可提出时效抗辩），但实体权利并不消灭。最长权利保护期间为20年，自权利受到损害之日起算。",
+    "category": "legal_clauses",
+    "source_type": "legal",
+    "knowledge_category": "limitation",
+    "source_document": "[评估测试] 付款协议争议与法律责任",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "什么是合同的附随义务？",
+    "ground_truth": "附随义务是基于诚实信用原则，当事人在合同约定之外应当承担的通知、协助、保密、告知、保护等义务。例如：订立合同前的重要事实告知义务、履行中的及时通知障碍义务、合同终止后的保密义务。违反附随义务造成对方损失的，也应承担赔偿责任。",
+    "category": "legal_clauses",
+    "source_type": "legal",
+    "knowledge_category": "collateral_duty",
+    "source_document": "[评估测试] 服务合同终止与争议解决",
+    "knowledge_coverage": "partial"
+  },
+  {
+    "question": "债权债务转让需要对方同意吗？",
+    "ground_truth": "债权转让（债权人变更）：不需要债务人同意，但应当通知债务人，未经通知对债务人不发生效力。债务转让（债务人变更）：必须经债权人同意，否则转让无效（因偿债能力直接影响债权实现）。债权债务一并转让（概括转移）：必须经对方同意。",
+    "category": "legal_clauses",
+    "source_type": "legal",
+    "knowledge_category": "assignment",
+    "source_document": "",
+    "knowledge_coverage": "not_covered"
+  },
+  {
+    "question": "采购合同中\"背靠背\"付款条款是什么？有什么风险？",
+    "ground_truth": "\"背靠背\"（Pay-when-paid）条款是指总承包商/中间商约定\"在收到业主/上游付款后才向分包商/供应商付款\"。风险：1. 上游信用风险传导给下游，即使分包商无违约也无法收款；2. 部分司法实践认为有违公平原则可能被认定无效或要求总承包商承担垫付义务；3. 建议设置最长付款期限（如验收后6个月内无论是否收到上游款均须支付）。",
+    "category": "commercial_terms",
+    "source_type": "contract",
+    "knowledge_category": "back_to_back",
+    "source_document": "",
+    "knowledge_coverage": "not_covered"
+  },
+  {
+    "question": "软件合同中知识产权归属如何约定？",
+    "ground_truth": "软件合同知识产权归属分三类：1. 定制开发：通常委托方所有（受托方不得擅自使用/披露/转售）；2. 标准产品（SaaS/产品化软件）：提供方保留所有权，仅授予使用许可；3. 合作开发：按约定共有或按贡献分配。还需明确：源代码交付、第三方组件授权、衍生作品权利、改进成果归属，以及交付后的维护与二次开发权利。",
+    "category": "commercial_terms",
+    "source_type": "contract",
+    "knowledge_category": "ip",
+    "source_document": "",
+    "knowledge_coverage": "not_covered"
+  },
+  {
+    "question": "服务合同中的SLA条款是什么？应包含哪些指标？",
+    "ground_truth": "SLA（Service Level Agreement，服务水平协议）用于量化服务质量，约定违约处罚。典型指标：系统可用性（如99.9%/月，即停机<43分钟）、响应时间（P1<15分钟响应）、恢复时间（P1<4小时恢复）、数据备份频率（每日异地备份）、变更通知期（提前7天通知）。通常约定：SLA不达标按阶梯比例扣除当月服务费（如可用性每低0.1%扣1%月费）。",
+    "category": "commercial_terms",
+    "source_type": "contract",
+    "knowledge_category": "sla",
+    "source_document": "[评估测试] 服务合同付款与SLA条款",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "合同中的\"通知与送达\"条款重要吗？为什么？",
+    "ground_truth": "非常重要。通知与送达条款约定各类法律文书（催告函、解除通知、异议函、付款提示）的送达地址、联系方式、送达方式（邮寄/电子邮件/专人/公告）以及视为送达的时间。实践中大量案件因无法有效送达导致维权受阻。建议同时约定：一方变更联系信息需书面通知，否则按原地址送达视为有效，电子送达视为与纸质送达具有同等效力。",
+    "category": "commercial_terms",
+    "source_type": "contract",
+    "knowledge_category": "notice",
+    "source_document": "[评估测试] 采购合同争议解决与法律条款",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "什么是合同的完整性条款（Entire Agreement）？",
+    "ground_truth": "完整性条款（全部协议条款）约定：本合同及其附件构成双方就本交易达成的全部协议，取代此前所有口头和书面沟通、谅解备忘录、意向书、草稿等。作用：1. 避免签约前邮件/会议纪要等非正式文件被认定为合同组成部分；2. 限制一方以\"先前承诺\"为由主张额外权利；3. 与\"非口头修改\"条款配合使用效果更佳。",
+    "category": "legal_clauses",
+    "source_type": "legal",
+    "knowledge_category": "entire_agreement",
+    "source_document": "",
+    "knowledge_coverage": "not_covered"
+  },
+  {
+    "question": "可分割性条款（Severability）有什么作用？",
+    "ground_truth": "可分割性条款约定：若本合同任何条款被有管辖权的法院或仲裁机构认定为无效、违法或不可执行，其余条款的效力不受影响，且应在法律允许的最大范围内执行。作用：避免因个别条款瑕疵（如违约金过高、管辖约定无效）导致整个合同被认定无效，保障核心交易结构的稳定性。",
+    "category": "legal_clauses",
+    "source_type": "legal",
+    "knowledge_category": "severability",
+    "source_document": "[评估测试] 付款协议争议与法律责任",
+    "knowledge_coverage": "partial"
+  },
+  {
+    "question": "什么是合同的让与担保？企业应注意什么？",
+    "ground_truth": "让与担保是债务人或第三人将担保财产的所有权形式上转移给债权人，债务履行后债权人返还财产，不履行则债权人可就该财产优先受偿的非典型担保方式。企业应注意：1. 必须签订书面合同并公示（动产交付/不动产登记）；2. 不得约定流押条款（即到期未履行直接归债权人所有，需清算）；3. 仅具有担保功能，债权人不能擅自使用或处分担保财产。",
+    "category": "legal_clauses",
+    "source_type": "legal",
+    "knowledge_category": "alienation_guarantee",
+    "source_document": "[评估测试] 保密协议权利义务与例外",
+    "knowledge_coverage": "partial"
+  },
+  {
+    "question": "合同签订前为什么要做尽职调查？重点查什么？",
+    "ground_truth": "尽职调查（Due Diligence）用于评估交易对手的履约能力和信用风险，避免合同签署后无法执行或遭受欺诈。重点核查：1. 主体资格：营业执照、资质证书、法定代表人身份证明；2. 信用状况：企查查/天眼查的失信被执行人、经营异常、重大诉讼、行政处罚；3. 履约能力：历史项目案例、财务报表、产能/人员配置；4. 授权：签约人授权委托书的真实性和权限范围。",
+    "category": "risk_clauses",
+    "source_type": "enterprise",
+    "knowledge_category": "due_diligence",
+    "source_document": "",
+    "knowledge_coverage": "not_covered"
+  },
+  {
+    "question": "电子合同的法律效力如何？企业签署电子合同应注意什么？",
+    "ground_truth": "根据《电子签名法》《民法典》，可靠的电子签名与手写签名或盖章具有同等法律效力。可靠电子签名条件：电子签名制作数据专属于电子签名人、签署时仅由电子签名人控制、签署后对电子签名的任何改动能够被发现、签署后对数据电文内容和形式的任何改动能够被发现。企业应选择合规第三方电子签平台（如法大大、e签宝），保存签署过程证据链，注意电子数据存证。",
+    "category": "legal_clauses",
+    "source_type": "legal",
+    "knowledge_category": "e_contract",
+    "source_document": "[评估测试] 采购合同标准模板与基础要素",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "数据合规条款在合同中为什么越来越重要？应包含哪些内容？",
+    "ground_truth": "随着《个人信息保护法》《数据安全法》施行，数据处理不合规可面临最高5000万元或上一年度营业额5%的罚款。合同数据条款应包含：1. 数据处理范围与目的限制；2. 双方角色界定（数据控制者/处理者）；3. 个人信息处理的合规承诺（告知同意、最小必要）；4. 数据安全措施与泄露通知义务（72小时内通知）；5. 数据删除/返还条款；6. 跨境数据传输合规评估（如适用）；7. 责任分配与赔偿。",
+    "category": "risk_clauses",
+    "source_type": "legal",
+    "knowledge_category": "data_compliance",
+    "source_document": "[评估测试] 付款协议质保金与违约金",
+    "knowledge_coverage": "partial"
+  },
+  {
+    "question": "什么是阴阳合同？有什么法律风险？",
+    "ground_truth": "阴阳合同是当事人就同一事项订立两份以上内容不同的合同，对内的\"阴合同\"反映真实意思，对外的\"阳合同\"用于备案、避税或应付监管。法律风险：1. 阳合同因虚假意思表示根据《民法典》第146条认定无效；2. 阴合同若违反强制性规定或公序良俗也可能无效；3. 税务机关追缴税款+滞纳金+0.5-5倍罚款，构成逃税罪的追究刑事责任；4. 建设工程领域阴阳合同可能导致工程价款结算纠纷。",
+    "category": "risk_clauses",
+    "source_type": "legal",
+    "knowledge_category": "yin_yang",
+    "source_document": "[评估测试] 劳动合同解除与违约责任",
+    "knowledge_coverage": "partial"
+  },
+  {
+    "question": "企业合同管理的\"三统一\"制度通常指什么？",
+    "ground_truth": "企业合同管理三统一通常指：1. 统一合同文本：使用经法务审定的标准合同模板，限制对模板的修改权限，减少条款遗漏和风险；2. 统一合同编号：建立全公司唯一编号规则，便于检索、归档、审计；3. 统一合同归档：所有合同正本由法务或档案部门集中保管，建立合同台账，记录签订、履行、变更、终止全生命周期。部分企业还包括\"统一审批流程\"，形成合同管理闭环。",
+    "category": "contract_basic",
+    "source_type": "enterprise",
+    "knowledge_category": "management",
+    "source_document": "[评估测试] 劳动合同基础信息与期限",
+    "knowledge_coverage": "partial"
+  },
+  {
+    "question": "合同的变更与合同的更新有什么区别？",
+    "ground_truth": "合同变更是在保持原合同同一性的前提下对部分内容（数量、价款、履行期限等）进行修改，原合同未变更的部分继续有效，变更前已履行部分原则上不受影响。合同更新（更改）是消灭原合同关系、成立新合同关系，新旧合同不具有同一性，原合同的担保、抗辩原则上不延续到新合同。变更一般通过补充协议实现；更新通常需要明确的意思表示。",
+    "category": "legal_clauses",
+    "source_type": "legal",
+    "knowledge_category": "change_update",
+    "source_document": "[评估测试] 服务合同违约与风险责任",
+    "knowledge_coverage": "partial"
+  },
+  {
+    "question": "合同履行中的提存制度是什么？适用情形有哪些？",
+    "ground_truth": "提存是由于债权人原因（无正当理由拒绝受领、下落不明、死亡未确定继承人或丧失民事行为能力未确定监护人等），债务人难以履行债务时，将标的物提交提存机关（公证处）以消灭债务的制度。提存成立视为债务人在其提存范围内已交付标的物，标的物毁损灭失风险由债权人承担，提存费用由债权人负担。债权人领取提存物的权利自提存之日起5年内不行使而消灭。",
+    "category": "legal_clauses",
+    "source_type": "legal",
+    "knowledge_category": "escrow",
+    "source_document": "",
+    "knowledge_coverage": "not_covered"
+  },
+  {
+    "question": "建设工程合同中\"黑白合同\"的结算规则是怎样的？",
+    "ground_truth": "根据《建设工程司法解释（一）》：招标人和中标人另行签订的建设工程施工合同约定的工程范围、建设工期、工程质量、工程价款等实质性内容，与中标合同不一致，一方当事人请求按照中标合同确定权利义务的，人民法院应予支持。即：依法必须招标且已备案的中标合同（白合同）作为结算依据，私下签订的背离中标合同实质性内容的黑合同不作为结算依据。非必须招标项目可按实际履行的合同结算。",
+    "category": "commercial_terms",
+    "source_type": "legal",
+    "knowledge_category": "black_white",
+    "source_document": "[评估测试] 建设工程合同争议与法律适用",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "合同履行中一方行使不安抗辩权需要满足什么条件？",
+    "ground_truth": "不安抗辩权：应当先履行债务的当事人，有确切证据证明对方有下列情形之一的，可以中止履行：1. 经营状况严重恶化；2. 转移财产、抽逃资金以逃避债务；3. 丧失商业信誉；4. 有丧失或者可能丧失履行债务能力的其他情形。行使要求：1. 必须有确切证据（不可主观臆测）；2. 应及时书面通知对方；3. 对方提供适当担保时应恢复履行；4. 未提供担保且未恢复履行能力的，可解除合同。无确切证据中止履行的，应承担违约责任。",
+    "category": "legal_clauses",
+    "source_type": "legal",
+    "knowledge_category": "uneasy_antithesis",
+    "source_document": "[评估测试] 采购合同违约责任与风险条款",
+    "knowledge_coverage": "covered"
+  },
+  {
+    "question": "采购合同中常见的所有权保留条款有什么作用？",
+    "ground_truth": "所有权保留条款：\"买方未履行支付价款或者其他义务的，标的物的所有权属于卖方。\" 作用：1. 担保功能：买方破产时，卖方可基于所有权取回标的物（优先于其他债权人受偿），而非仅作为普通债权参与分配；2. 履约压力：督促买方按期付款；3. 注意：所有权保留仅适用于动产，不动产不适用；未经登记的所有权保留不得对抗善意第三人；买方已支付总价75%以上的，卖方不得主张取回。",
+    "category": "risk_clauses",
+    "source_type": "legal",
+    "knowledge_category": "retention_title",
+    "source_document": "[评估测试] 服务合同基础信息与标的",
+    "knowledge_coverage": "partial"
+  }
+]
